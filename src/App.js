@@ -1,26 +1,75 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import List from './components/List/List';
+import Input from './components/Input/Input';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    myTodoList: [
+      {
+        text: 'Go to grocery',
+        date: new Date().toLocaleString(),
+      },
+      {
+        text: 'Go to supermarket',
+        date: new Date().toLocaleString(),
+      },
+      {
+        text: 'Go to gym',
+        date: new Date().toLocaleString(),
+      }
+    ],
+    item: '',
+    activeClass: false,
+  }
+
+  addNewItem = () => {
+    const newItem = {
+      text: this.state.item,
+      date: new Date().toLocaleString(),
+    };
+    this.setState(state => ({
+      myTodoList: state.myTodoList.concat(newItem),
+      item: ''
+    }));
+  }
+
+  handleChange = e => {
+    this.setState({ item: e.target.value })
+  }
+
+  saveOnEnterPressed = e => {
+    if(e.key === 'Enter') {
+      this.addNewItem();
+    }
+  }
+
+  taskDone = () => {
+    console.log('Task done');
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>TODO list</h1>
+        <Input 
+          inputValue={ this.state.item } 
+          onInputChange={ this.handleChange } 
+          onEnterPressed={this.saveOnEnterPressed}
+          addItemInList={ this.addNewItem }
+        />
+        { this.state.myTodoList.map((item, index) => {
+            return <List
+              text={ item.text } 
+              date={ item.date } 
+              key={ index }
+              taskDone={ this.taskDone }
+            />
+          })
+        }
+      </div>
+    );
+  }
 }
 
 export default App;
