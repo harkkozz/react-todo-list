@@ -28,3 +28,9 @@ ul > li {
   font-size: 12px;
   color: white;
 }
+
+@media (max-width: 600px) {
+  .list {
+    width: 70%;
+  }
+}

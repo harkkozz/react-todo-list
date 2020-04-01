@@ -29,6 +29,7 @@ class App extends Component {
       date: new Date().toLocaleString(),
     };
     if(this.state.item === '') {
+      alert('Please add something to todo')
       return;
     } 
     this.setState(state => ({

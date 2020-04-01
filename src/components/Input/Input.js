@@ -10,6 +10,7 @@ const Input = (props) => {
         onKeyPress={props.onEnterPressed}
         placeholder="Add new item ..."
       ></input>
+      <span></span>
       <button className="add-item-button" onClick={props.addItemInList}>+</button>
     </div>
   )
