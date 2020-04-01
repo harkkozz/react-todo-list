@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
 import List from './components/List/List';
 import Input from './components/Input/Input';
+import appStyles from './App.module.scss';
 
 class App extends Component {
   state = {
@@ -48,13 +48,18 @@ class App extends Component {
     }
   }
 
-  taskDone = () => {
-    console.log('Task done');
+  removeItemFromList(index) {
+    
+    return () => {
+      let todoListTemp = [...this.state.myTodoList]; 
+        todoListTemp.splice(index, 1);
+        this.setState({ myTodoList: todoListTemp });
+    }
   }
 
   render() {
     return (
-      <div className="App">
+      <div className={appStyles.App}>
         <h1>TODO list</h1>
         <Input 
           inputValue={ this.state.item } 
@@ -66,8 +71,9 @@ class App extends Component {
             return <List
               text={ item.text } 
               date={ item.date } 
+              index={ index }
               key={ index }
-              taskDone={ this.taskDone }
+              removeItem={ this.removeItemFromList(index) }
             />
           })
         }

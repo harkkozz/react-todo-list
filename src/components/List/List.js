@@ -1,14 +1,16 @@
 import React from 'react'
-import './List.css';
+import listStyles from './List.module.scss';
 
 const List = props => {
   return (
-    <div className="list" onClick={props.taskDone}>
+    <div className={listStyles.list} onClick={props.taskDone}>
       <ul onClick={ props.taskDone }>
+      <button className={listStyles.removeBtn} onClick={ props.removeItem }>X</button>
         <li>
+          { props.index + 1 }.  
           { props.text }
           <br />
-          <span className="dateSpan">
+          <span className={listStyles.dateSpan}>
             { props.date }
           </span>
         </li>

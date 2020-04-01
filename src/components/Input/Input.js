@@ -1,9 +1,9 @@
 import React from 'react';
-import './Input.css';
+import inputStyles from './Input.module.scss';
 
 const Input = (props) => {
   return (
-    <div className="custom-input">
+    <div className={inputStyles.customInput}>
       <input 
         value={props.inputValue}
         onChange={props.onInputChange}
@@ -11,7 +11,7 @@ const Input = (props) => {
         placeholder="Add new item ..."
       ></input>
       <span></span>
-      <button className="add-item-button" onClick={props.addItemInList}>+</button>
+      <button className={inputStyles.addItemButton} onClick={props.addItemInList}>+</button>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-.custom-input {
+.customInput {
   margin: 50px auto;
 }
 
@@ -12,21 +12,28 @@ input {
   width: 25%;
   color: salmon;
   font-weight: 700;
+
+  &::placeholder {
+    font-weight: 400;
+  }
 }
 
-input::placeholder {
-  font-weight: 400;
-}
-
-.add-item-button {
+.addItemButton {
   font-size: 30px;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   outline: none;
   background-color: salmon;
   color: white;
-  width: auto;
+  width: 50px;
+  margin-left: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightsalmon;
+  }
 }
+
 
 @media (max-width: 500px) {
   input {
