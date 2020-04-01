@@ -28,6 +28,9 @@ class App extends Component {
       text: this.state.item,
       date: new Date().toLocaleString(),
     };
+    if(this.state.item === '') {
+      return;
+    } 
     this.setState(state => ({
       myTodoList: state.myTodoList.concat(newItem),
       item: ''
